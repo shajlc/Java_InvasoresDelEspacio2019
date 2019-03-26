@@ -104,11 +104,11 @@ public class VentanaJuego extends javax.swing.JFrame {
         creaFilaDeMarcianos(0, 0, 2);
         creaFilaDeMarcianos(1, 2, 2);
         creaFilaDeMarcianos(2, 4, 0);
-        creaFilaDeMarcianos(3, 0, 2);
-        creaFilaDeMarcianos(4, 0, 2);
-        creaFilaDeMarcianos(5, 0, 2);
-        creaFilaDeMarcianos(6, 0, 2);
-        creaFilaDeMarcianos(7, 0, 2);        
+        creaFilaDeMarcianos(3, 3, 0);
+        creaFilaDeMarcianos(4, 1, 1);
+        creaFilaDeMarcianos(5, 2, 1);
+        creaFilaDeMarcianos(6, 2, 0);
+        creaFilaDeMarcianos(7, 0, 0);      
     }
   
     
