@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author Jorge Cisneros
+ * @author Sharon
  */
 public class Nave {
     public Image imagen = null;
@@ -22,7 +22,11 @@ public class Nave {
 
     
     public Nave(){
-
+        try {
+            imagen = ImageIO.read(getClass().getResource("/imagenes/nave.png"));
+        } catch (IOException ex) {
+            
+        }
     }
     
     public void mueve(){

@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author Jorge Cisneros
+ * @author Sharon
  */
 public class Marciano {
     public Image imagen1, imagen2 = null;
@@ -17,7 +17,7 @@ public class Marciano {
     public boolean vivo = true;
     
     public Marciano(){
-
+        
     }
     
     public void mueve(){

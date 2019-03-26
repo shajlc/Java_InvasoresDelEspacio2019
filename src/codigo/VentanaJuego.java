@@ -6,31 +6,34 @@
 package codigo;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.Timer;
 
 /**
  *
- * @author Jorge Cisneros
+ * @author Sharon
  */
 public class VentanaJuego extends javax.swing.JFrame {
-
+    public static Label lbl_puntaje = new Label(); //para el puntaje
     static int ANCHOPANTALLA = 600;
-    static int ALTOPANTALLA = 450;
+    static int ALTOPANTALLA = 500;
 
     //numero de marcianos que van a aparecer
     int filas = 8;
     int columnas = 10;
+    int puntaje = 0;
+    //Puntaje puntaje = new Puntaje();
+    Sonidos sonido = new Sonidos();
 
     BufferedImage buffer = null;
 
@@ -57,6 +60,20 @@ public class VentanaJuego extends javax.swing.JFrame {
      */
     public VentanaJuego() {
         initComponents();
+        setTitle("Space Invaders");
+        setLocationRelativeTo(null);
+        Font font1;
+        Color color1;
+        Color color2;
+        font1 = new Font("Courier New", Font.BOLD, 40);
+        color1 = new Color(124, 252, 0);
+        color2 = new Color(0, 0, 0);
+        lbl_puntaje.setFont(font1);
+        lbl_puntaje.setForeground(color1);
+        lbl_puntaje.setBackground(color2);
+        lbl_puntaje.setBounds(450, 350, 100, 45);
+        lbl_puntaje.setText("0");
+        jPanel1.add(lbl_puntaje);
         //para cargar el archivo de imagenes: 
         // 1º, el nombre del archivo
         // 2º filas que tiene el spritesheet
@@ -187,6 +204,9 @@ public class VentanaJuego extends javax.swing.JFrame {
                         miDisparo.posicionaDisparo(miNave);
                         miDisparo.y = 1000;
                         miDisparo.disparado = false;
+                        sonido.muerteMarcianos();
+                        puntaje = puntaje + 10;
+                        lbl_puntaje.setText("" + puntaje);
                     }
                 }
             }
@@ -293,6 +313,7 @@ public class VentanaJuego extends javax.swing.JFrame {
             case KeyEvent.VK_SPACE:
                 miDisparo.posicionaDisparo(miNave);
                 miDisparo.disparado = true;
+                sonido.disparo();
                 break;
         }
     }//GEN-LAST:event_formKeyPressed
