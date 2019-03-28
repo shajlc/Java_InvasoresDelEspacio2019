@@ -26,7 +26,7 @@ import javax.swing.Timer;
 public class VentanaJuego extends javax.swing.JFrame {
     public static Label lbl_puntaje = new Label(); //para el puntaje
     static int ANCHOPANTALLA = 600;
-    static int ALTOPANTALLA = 500;
+    static int ALTOPANTALLA = 570;
 
     //numero de marcianos que van a aparecer
     int filas = 8;
@@ -71,7 +71,7 @@ public class VentanaJuego extends javax.swing.JFrame {
         lbl_puntaje.setFont(font1);
         lbl_puntaje.setForeground(color1);
         lbl_puntaje.setBackground(color2);
-        lbl_puntaje.setBounds(450, 350, 100, 45);
+        lbl_puntaje.setBounds(200, 0, 100, 45);
         lbl_puntaje.setText("0");
         jPanel1.add(lbl_puntaje);
         //para cargar el archivo de imagenes: 
@@ -217,6 +217,7 @@ public class VentanaJuego extends javax.swing.JFrame {
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
                 listaMarcianos[i][j].setvX(listaMarcianos[i][j].getvX()* -1);
+                listaMarcianos[i][j].y += 15;//los aliens bajaran
             }
         }
     }
@@ -224,7 +225,7 @@ public class VentanaJuego extends javax.swing.JFrame {
     private void pintaMarcianos(Graphics2D _g2) {
 
         int anchoMarciano = listaMarcianos[0][0].imagen1.getWidth(null);
-        for (int i = 0; i < filas; i++) {
+        for (int i = 2; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
                 if (listaMarcianos[i][j].vivo) {
                     listaMarcianos[i][j].mueve();
