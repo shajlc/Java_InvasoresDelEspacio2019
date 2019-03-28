@@ -47,6 +47,7 @@ public class VentanaJuego extends javax.swing.JFrame {
     //imagen para cargar el spritesheet con todos los sprites del juego
     BufferedImage plantilla = null;
     Image [][] imagenes ;
+    Image fondo;
     
     Timer temporizador = new Timer(10, new ActionListener() {
         @Override
@@ -62,6 +63,10 @@ public class VentanaJuego extends javax.swing.JFrame {
         initComponents();
         setTitle("Space Invaders");
         setLocationRelativeTo(null);
+         try {
+            fondo = ImageIO.read(getClass().getResource("/imagenes/fondo.jpeg"));
+        } catch (IOException ex) {
+        }
         Font font1;
         Color color1;
         Color color2;
@@ -70,7 +75,7 @@ public class VentanaJuego extends javax.swing.JFrame {
         color2 = new Color(0, 0, 0);
         lbl_puntaje.setFont(font1);
         lbl_puntaje.setForeground(color1);
-        lbl_puntaje.setBackground(color2);
+          lbl_puntaje.setBackground(color2);
         lbl_puntaje.setBounds(200, 0, 100, 45);
         lbl_puntaje.setText("0");
         jPanel1.add(lbl_puntaje);
@@ -164,7 +169,7 @@ public class VentanaJuego extends javax.swing.JFrame {
         Graphics2D g2 = (Graphics2D) buffer.getGraphics();
         g2.setColor(Color.BLACK);
         g2.fillRect(0, 0, ANCHOPANTALLA, ALTOPANTALLA);
-
+        g2.drawImage(fondo, 0, 0, null);
         ///////////////////////////////////////////////////////
         //redibujaremos aquí cada elemento
         g2.drawImage(miDisparo.imagen, miDisparo.x, miDisparo.y, null);
